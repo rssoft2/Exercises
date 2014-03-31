@@ -1,0 +1,11 @@
+﻿<Window x:Class="ExtractMe.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:extractMe="clr-namespace:ExtractMe"
+        Title="MainWindow" Height="350" Width="525" DataContext="{StaticResource MyViewModel}">
+    <Grid>
+        <extractMe:MyUserControl>
+
+        </extractMe:MyUserControl>
+    </Grid>
+</Window>
