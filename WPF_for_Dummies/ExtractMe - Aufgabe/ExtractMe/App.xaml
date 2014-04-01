@@ -5,16 +5,22 @@
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <extractMe:MyViewModel x:Key="MyViewModel" ShowHeader="True" ShowFooter="True" Header="MyHeader" Footer="MyFooter">
-            <extractMe:MyViewModel.Liste>
-                <x:ArrayExtension Type="{x:Type system:String}">
-                    <system:String>Rot</system:String>
-                    <system:String>Blau</system:String>
-                    <system:String>Grün</system:String>
-                    <system:String>Gelb</system:String>
-                </x:ArrayExtension>
-            </extractMe:MyViewModel.Liste>
-        </extractMe:MyViewModel>
-        <BooleanToVisibilityConverter x:Key="VisibilityConverter"></BooleanToVisibilityConverter>
+        <ResourceDictionary>
+            <!--hier wird eine Instanz der Klasse MyViewModel erzeugt und mit Daten gefüllt, Key wichtig -->
+            <extractMe:MyViewModel x:Key="MyViewModel123" ShowHeader="True" ShowFooter="True" Header="1111111" Footer="MyFooter">
+                <extractMe:MyViewModel.Liste>
+                    <x:ArrayExtension Type="{x:Type system:String}">
+                        <!--wer kommt denn auf so was???????-->
+                        <system:String>Rot</system:String>
+                        <system:String>Blau</system:String>
+                        <system:String>Grün</system:String>
+                        <system:String>Gelb</system:String>
+                    </x:ArrayExtension>
+                </extractMe:MyViewModel.Liste>
+            </extractMe:MyViewModel>
+            <!--wenn ich den später mal verwenden will MUSS ich ihn hier so deklarieren??? Key wichtig-->
+            <!--MUSS nein, aber hier global Scope also immer sichtbar-->
+            <BooleanToVisibilityConverter x:Key="VisibilityConverter456"></BooleanToVisibilityConverter>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

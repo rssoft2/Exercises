@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ExtractMe
 {
@@ -24,5 +12,20 @@ namespace ExtractMe
         {
             InitializeComponent();
         }
+
+        public static BooleanToVisibilityConverter Converter = new BooleanToVisibilityConverter();
+
+        public bool ShowHeaderXaml
+        {
+            get { return (bool)GetValue(ShowHeaderXamlProperty); }
+            set { SetValue(ShowHeaderXamlProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ShowHeaderXAML.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ShowHeaderXamlProperty =
+            DependencyProperty.Register("ShowHeaderXaml", typeof(bool), typeof(MyUserControl),
+            new PropertyMetadata(true, (o, args) => ((MyUserControl)o).HeaderControl.Visibility = (System.Windows.Visibility)Converter.Convert(args.NewValue, typeof(Visibility), null, null)));
+
+
     }
 }
