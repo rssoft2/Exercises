@@ -27,5 +27,16 @@ namespace ExtractMe
             new PropertyMetadata(true, (o, args) => ((MyUserControl)o).HeaderControl.Visibility = (System.Windows.Visibility)Converter.Convert(args.NewValue, typeof(Visibility), null, null)));
 
 
+
+        public bool ShowFooterXaml
+        {
+            get { return (bool)GetValue(ShowFooterXamlProperty); }
+            set { SetValue(ShowFooterXamlProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ShowFooterXaml.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ShowFooterXamlProperty =
+            DependencyProperty.Register("ShowFooterXaml", typeof(bool), typeof(MyUserControl), new PropertyMetadata(true));
+        
     }
 }
