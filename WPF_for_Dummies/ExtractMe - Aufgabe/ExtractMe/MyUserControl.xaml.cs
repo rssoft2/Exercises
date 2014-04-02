@@ -12,7 +12,17 @@ namespace ExtractMe
         {
             InitializeComponent();
         }
+        
+        public object HeaderPresenter
+        {
+            get { return GetValue(HeaderPresenterProperty); }
+            set { SetValue(HeaderPresenterProperty, value); }
+        }
 
+        public static readonly DependencyProperty HeaderPresenterProperty =
+            DependencyProperty.Register("HeaderPresenter", typeof(object), typeof(MyUserControl), new PropertyMetadata(null));
+
+        
         public bool ShowHeaderXaml
         {
             get { return (bool)GetValue(ShowHeaderXamlProperty); }

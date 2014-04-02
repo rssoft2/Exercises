@@ -13,13 +13,13 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Border Name="HeaderControl" BorderBrush="Black" BorderThickness="1" Background="LightBlue" Padding="11" >
-            <!--Visibility "gebunden" über PropertyChangedCallback-->
-            <TextBlock Text="{Binding Header}" FontWeight="Bold" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        </Border>
+        
+        <ContentPresenter Name="HeaderControl" Content="{Binding Path=HeaderPresenter, RelativeSource={RelativeSource AncestorType={x:Type extractMe:MyUserControl}}}" />
+
         <Border Grid.Row="1" Margin="10" Padding="10">
             <ListBox Background="LightGray" ItemsSource="{Binding Liste}" FontSize="16" />
         </Border>
+        
         <Border Name="FooterControl" Grid.Row="2" BorderBrush="Black" BorderThickness="1" Background="LightBlue" Height="60" 
                 Visibility="{Binding Path=ShowFooterXaml, RelativeSource={RelativeSource AncestorType={x:Type extractMe:MyUserControl}}, Converter={StaticResource VisibilityConverter456}}">
             <!--Visibility "gebunden" über RelativeSource/Path-->

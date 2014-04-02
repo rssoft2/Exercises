@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:extractMe="clr-namespace:ExtractMe"
-        Title="...MainWindow..." Height="350" Width="525" DataContext="{StaticResource MyViewModel123}">
+        Title="...MainWindow..." Height="450" Width="525" DataContext="{StaticResource MyViewModel123}">
     <!--DataContext hier nur Runtime?! nein beides-->
     <ScrollViewer>
         <StackPanel>
@@ -11,7 +11,7 @@
                             Content="my content">
             </ContentControl>
             <!--Templated control with data binding to named element-->
-            <ContentControl Name="SecondContentControl"  Template="{StaticResource MyContentControlTemplate}" HorizontalContentAlignment="Right"
+            <ContentControl Name="SecondContentControl" Template="{StaticResource MyContentControlTemplate}" HorizontalContentAlignment="Right"
                             Content="{Binding Path=Text, ElementName=MyTextBox}">
                 <!-- Binding in ausführlicher Schreibweise
                 <ContentControl.Content>
@@ -22,8 +22,13 @@
                 </ContentControl.Content>-->
             </ContentControl>
 
-            <!--<extractMe:MyUserControl x:Name="MyUserControl" Visibility="Visible" Padding="10" Background="SandyBrown" ShowHeaderXaml="True" ShowFooterXaml="True">
-            </extractMe:MyUserControl>-->
+            <extractMe:MyUserControl x:Name="MyUserControl" Visibility="Visible" Padding="10" Background="SandyBrown" ShowHeaderXaml="False" ShowFooterXaml="True">
+                <extractMe:MyUserControl.HeaderPresenter>
+                    <Border BorderBrush="Black" BorderThickness="1" Background="LightBlue" Padding="11" >
+                        <TextBlock Text="header coming from main window" FontWeight="Bold" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                </extractMe:MyUserControl.HeaderPresenter>
+            </extractMe:MyUserControl>
 
             <Button Name="MyButton" Click="MyButton_Click">
                 <Grid ColumnSpan="123">
