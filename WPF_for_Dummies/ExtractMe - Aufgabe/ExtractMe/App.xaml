@@ -26,7 +26,7 @@
 
             <ControlTemplate x:Key="MyContentControlTemplate" TargetType="ContentControl">
                 <StackPanel>
-                    <Border Name="HeaderControl" BorderBrush="Black" BorderThickness="1" Background="LightBlue" Padding="11" >
+                    <Border Name="HeaderControl" BorderBrush="Black" BorderThickness="1" Background="Thistle"  Padding="11" >
                         <TextBlock FontWeight="Bold" FontSize="22" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="Center">
                             <ContentPresenter Content="{TemplateBinding Content}"></ContentPresenter>
                             <!-- geht auch einfach so: <ContentPresenter></ContentPresenter>-->
