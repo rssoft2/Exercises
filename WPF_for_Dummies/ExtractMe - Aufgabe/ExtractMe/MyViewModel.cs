@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -35,7 +36,8 @@ namespace ExtractMe
             }
         }
 
-        public bool ShowHeader
+        [Obsolete]
+        public bool ShowHeader 
         {
             get { return _showHeader; }
             set
@@ -57,6 +59,7 @@ namespace ExtractMe
             }
         }
 
+        [Obsolete]
         public bool ShowFooter
         {
             get { return _showFooter; }

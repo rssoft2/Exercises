@@ -13,20 +13,15 @@ namespace ExtractMe
             InitializeComponent();
         }
 
-        public static BooleanToVisibilityConverter Converter = new BooleanToVisibilityConverter();
-
         public bool ShowHeaderXaml
         {
             get { return (bool)GetValue(ShowHeaderXamlProperty); }
             set { SetValue(ShowHeaderXamlProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ShowHeaderXAML.  This enables animation, styling, binding, etc...
+        // hier wird über den PropertyChangedCallback die Eigenschaft HeaderControl.Visibility gesetzt (kein xaml binding)
         public static readonly DependencyProperty ShowHeaderXamlProperty =
-            DependencyProperty.Register("ShowHeaderXaml", typeof(bool), typeof(MyUserControl),
-            new PropertyMetadata(true, (o, args) => ((MyUserControl)o).HeaderControl.Visibility = (System.Windows.Visibility)Converter.Convert(args.NewValue, typeof(Visibility), null, null)));
-
-
+            DependencyProperty.Register("ShowHeaderXaml", typeof(bool), typeof(MyUserControl), new PropertyMetadata(true, ShowHeaderXamlPropertyChangedCallback()));
 
         public bool ShowFooterXaml
         {
@@ -34,9 +29,15 @@ namespace ExtractMe
             set { SetValue(ShowFooterXamlProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ShowFooterXaml.  This enables animation, styling, binding, etc...
+        // hier wird die Eigenschaft HeaderControl.Visibility im xaml an die DependencyProperty ShowFooterXamlProperty gebunden
         public static readonly DependencyProperty ShowFooterXamlProperty =
             DependencyProperty.Register("ShowFooterXaml", typeof(bool), typeof(MyUserControl), new PropertyMetadata(true));
-        
+
+        private static PropertyChangedCallback ShowHeaderXamlPropertyChangedCallback()
+        {
+            return (o, args) => ((MyUserControl)o).HeaderControl.Visibility = (Visibility)Converter.Convert(args.NewValue, typeof(Visibility), null, null);
+        }
+
+        private static readonly BooleanToVisibilityConverter Converter = new BooleanToVisibilityConverter();
     }
 }

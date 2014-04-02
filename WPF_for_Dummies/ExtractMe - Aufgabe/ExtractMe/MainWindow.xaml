@@ -6,7 +6,7 @@
     <!--DataContext hier nur Runtime?! nein beides-->
     <ScrollViewer>
         <StackPanel>
-            <extractMe:MyUserControl Visibility="Visible" Padding="10" Background="SandyBrown" ShowHeaderXaml="False" ShowFooterXaml="False">
+            <extractMe:MyUserControl Visibility="Visible" Padding="10" Background="SandyBrown" ShowHeaderXaml="True" ShowFooterXaml="False">
             </extractMe:MyUserControl>
         </StackPanel>
     </ScrollViewer>

@@ -7,7 +7,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <!--hier wird eine Instanz der Klasse MyViewModel erzeugt und mit Daten gefüllt, Key wichtig -->
-            <extractMe:MyViewModel x:Key="MyViewModel123" ShowHeader="True" ShowFooter="True" Header="1111111" Footer="MyFooter">
+            <extractMe:MyViewModel x:Key="MyViewModel123" Header="1111111" Footer="MyFooter">
                 <extractMe:MyViewModel.Liste>
                     <x:ArrayExtension Type="{x:Type system:String}">
                         <!--wer kommt denn auf so was???????-->
