@@ -11,7 +11,7 @@
                             Content="my content">
             </ContentControl>
             <!--Templated control with data binding to named element-->
-            <ContentControl Name="SecondContentControl"  Template="{StaticResource MyContentControlTemplate}" HorizontalContentAlignment="Left"
+            <ContentControl Name="SecondContentControl"  Template="{StaticResource MyContentControlTemplate}" HorizontalContentAlignment="Right"
                             Content="{Binding Path=Text, ElementName=MyTextBox}">
                 <!-- Binding in ausführlicher Schreibweise
                 <ContentControl.Content>
