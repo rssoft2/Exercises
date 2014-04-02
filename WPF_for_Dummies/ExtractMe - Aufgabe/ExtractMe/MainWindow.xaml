@@ -2,14 +2,24 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:extractMe="clr-namespace:ExtractMe"
-        Title="...MainWindow..." Height="350" Width="525" DataContext="{StaticResource MyViewModel123}">  
+        Title="...MainWindow..." Height="350" Width="525" DataContext="{StaticResource MyViewModel123}">
     <!--DataContext hier nur Runtime?! nein beides-->
     <ScrollViewer>
         <StackPanel>
             <extractMe:MyUserControl x:Name="MyUserControl" Visibility="Visible" Padding="10" Background="SandyBrown" ShowHeaderXaml="True" ShowFooterXaml="True">
             </extractMe:MyUserControl>
-            <TextBox Name="MyTextBox"> </TextBox>
-            <Button Name="MyButton" Content="do not press!" Click="MyButton_Click"></Button>
+            <Button Name="MyButton" Click="MyButton_Click">
+                <Grid ColumnSpan="123">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="111" />
+                        <ColumnDefinition Width="111" />
+                        <ColumnDefinition Width="111" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="enter value here..."></Label>
+                    <TextBox Name="MyTextBox" Grid.Column="1" Text="" />
+                    <Label Grid.Column="2" Content="...and press button"></Label>
+                </Grid>
+            </Button>
         </StackPanel>
     </ScrollViewer>
 </Window>
