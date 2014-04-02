@@ -6,8 +6,25 @@
     <!--DataContext hier nur Runtime?! nein beides-->
     <ScrollViewer>
         <StackPanel>
-            <extractMe:MyUserControl x:Name="MyUserControl" Visibility="Visible" Padding="10" Background="SandyBrown" ShowHeaderXaml="True" ShowFooterXaml="True">
-            </extractMe:MyUserControl>
+            <!--Templated control with text content-->
+            <ContentControl Name="FirstContentControl" Template="{StaticResource MyContentControlTemplate}" HorizontalContentAlignment="Left"
+                            Content="my content">
+            </ContentControl>
+            <!--Templated control with data binding to named element-->
+            <ContentControl Name="SecondContentControl"  Template="{StaticResource MyContentControlTemplate}" HorizontalContentAlignment="Left"
+                            Content="{Binding Path=Text, ElementName=MyTextBox}">
+                <!-- Binding in ausführlicher Schreibweise
+                <ContentControl.Content>
+                    <Binding>
+                        <Binding.Path>Text</Binding.Path>
+                        <Binding.ElementName>MyTextBox</Binding.ElementName>
+                    </Binding>
+                </ContentControl.Content>-->
+            </ContentControl>
+
+            <!--<extractMe:MyUserControl x:Name="MyUserControl" Visibility="Visible" Padding="10" Background="SandyBrown" ShowHeaderXaml="True" ShowFooterXaml="True">
+            </extractMe:MyUserControl>-->
+
             <Button Name="MyButton" Click="MyButton_Click">
                 <Grid ColumnSpan="123">
                     <Grid.ColumnDefinitions>

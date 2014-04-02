@@ -6,6 +6,7 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
+
             <!--hier wird eine Instanz der Klasse MyViewModel erzeugt und mit Daten gefüllt, Key wichtig -->
             <extractMe:MyViewModel x:Key="MyViewModel123" Header="MyHeader" Footer="MyFooter">
                 <extractMe:MyViewModel.Liste>
@@ -18,9 +19,22 @@
                     </x:ArrayExtension>
                 </extractMe:MyViewModel.Liste>
             </extractMe:MyViewModel>
+
             <!--wenn ich den später mal verwenden will MUSS ich ihn hier so deklarieren??? Key wichtig-->
             <!--MUSS nein, aber hier global Scope also immer sichtbar-->
             <BooleanToVisibilityConverter x:Key="VisibilityConverter456"></BooleanToVisibilityConverter>
+
+            <ControlTemplate x:Key="MyContentControlTemplate" TargetType="ContentControl">
+                <StackPanel>
+                    <Border Name="HeaderControl" BorderBrush="Black" BorderThickness="1" Background="LightBlue" Padding="11" >
+                        <TextBlock FontWeight="Bold" FontSize="22" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="Center">
+                            <ContentPresenter Content="{TemplateBinding Content}"></ContentPresenter>
+                            <!-- geht auch einfach so: <ContentPresenter></ContentPresenter>-->
+                        </TextBlock>
+                    </Border>
+                </StackPanel>
+            </ControlTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>
