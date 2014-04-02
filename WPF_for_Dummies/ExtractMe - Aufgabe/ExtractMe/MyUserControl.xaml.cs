@@ -6,7 +6,7 @@ namespace ExtractMe
     /// <summary>
     /// Interaction logic for MyUserControl.xaml
     /// </summary>
-    public partial class MyUserControl : UserControl
+    public partial class MyUserControl
     {
         public MyUserControl()
         {

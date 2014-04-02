@@ -6,8 +6,10 @@
     <!--DataContext hier nur Runtime?! nein beides-->
     <ScrollViewer>
         <StackPanel>
-            <extractMe:MyUserControl Visibility="Visible" Padding="10" Background="SandyBrown" ShowHeaderXaml="True" ShowFooterXaml="False">
+            <extractMe:MyUserControl x:Name="MyUserControl" Visibility="Visible" Padding="10" Background="SandyBrown" ShowHeaderXaml="True" ShowFooterXaml="True">
             </extractMe:MyUserControl>
+            <TextBox Name="MyTextBox"> </TextBox>
+            <Button Name="MyButton" Content="do not press!" Click="MyButton_Click"></Button>
         </StackPanel>
     </ScrollViewer>
 </Window>

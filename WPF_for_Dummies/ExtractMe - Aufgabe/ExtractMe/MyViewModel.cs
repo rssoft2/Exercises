@@ -56,6 +56,7 @@ namespace ExtractMe
                 if (_footer == value) return;
                 _footer = value;
                 OnPropertyChanged();
+                //this.Header = _footer;
             }
         }
 
