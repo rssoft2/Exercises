@@ -13,7 +13,8 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        
+
+        <!--hier wird ein Control namens "HeaderControl" erstellt, dessen Inhalt über Binding aus der DepProp "HeaderPresenter" kommt -->
         <ContentPresenter Name="HeaderControl" Content="{Binding Path=HeaderPresenter, RelativeSource={RelativeSource AncestorType={x:Type extractMe:MyUserControl}}}" />
 
         <Border Grid.Row="1" Margin="10" Padding="10">

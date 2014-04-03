@@ -22,7 +22,8 @@
                 </ContentControl.Content>-->
             </ContentControl>
 
-            <extractMe:MyUserControl x:Name="MyUserControl" Visibility="Visible" Padding="10" Background="SandyBrown" ShowHeaderXaml="False" ShowFooterXaml="True">
+            <!--hier wird ein Control des Typs "MyUserControl" erstellt und sowohl standard-properties als auch die eigene property "HeaderPresenter" gesetzt -->
+            <extractMe:MyUserControl x:Name="MyUserControl" Visibility="Visible" Padding="10" Background="SandyBrown" ShowHeaderXaml="True" ShowFooterXaml="True">
                 <extractMe:MyUserControl.HeaderPresenter>
                     <Border BorderBrush="Black" BorderThickness="1" Background="LightBlue" Padding="11" >
                         <TextBlock Text="header coming from main window" FontWeight="Bold" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center" />
