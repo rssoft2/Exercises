@@ -14,7 +14,6 @@ namespace ExtractMe
 
         private void MyButton_Click(object sender, RoutedEventArgs e)
         {
-            ((MyViewModel) DataContext).Footer = MyTextBox.Text;
             FirstContentControl.Content = MyTextBox.Text;
         }
     }

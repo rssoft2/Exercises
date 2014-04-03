@@ -16,63 +16,25 @@ namespace ExtractMe
     #endregion
     public sealed class MyViewModel : INotifyPropertyChanged
     {
-        private bool _showFooter;
-        private object _footer;
-        private bool _showHeader;
-        private object _header;
+        private string _myText;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public IEnumerable Liste { get; set; }
 
-        public object Header
+
+        public string MyText
         {
-            get { return _header; }
+            get { return _myText; }
             set
             {
-                if (_header == value) return;
-                _header = value;
+                if (_myText == value) return;
+                _myText = value;
                 OnPropertyChanged();
             }
         }
 
-        [Obsolete]
-        public bool ShowHeader 
-        {
-            get { return _showHeader; }
-            set
-            {
-                if (_showHeader == value) return;
-                _showHeader = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public object Footer
-        {
-            get { return _footer; }
-            set
-            {
-                if (_footer == value) return;
-                _footer = value;
-                OnPropertyChanged();
-                //this.Header = _footer;
-            }
-        }
-
-        [Obsolete]
-        public bool ShowFooter
-        {
-            get { return _showFooter; }
-            set
-            {
-                if (_showFooter == value) return;
-                _showFooter = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+       private void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             var handler = PropertyChanged;
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
