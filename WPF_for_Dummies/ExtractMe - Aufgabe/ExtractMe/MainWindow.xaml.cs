@@ -16,5 +16,10 @@ namespace ExtractMe
         {
             FirstContentControl.Content = MyTextBox.Text;
         }
+
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            MyUserControl.HeaderPresenter = null;
+        }
     }
 }

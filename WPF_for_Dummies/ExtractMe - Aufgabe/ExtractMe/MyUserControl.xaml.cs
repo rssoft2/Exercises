@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace ExtractMe
@@ -12,7 +13,7 @@ namespace ExtractMe
         {
             InitializeComponent();
         }
-        
+
         public object HeaderPresenter
         {
             get { return GetValue(HeaderPresenterProperty); }
@@ -20,7 +21,14 @@ namespace ExtractMe
         }
 
         public static readonly DependencyProperty HeaderPresenterProperty =
-            DependencyProperty.Register("HeaderPresenter", typeof(object), typeof(MyUserControl), new PropertyMetadata(null));
+            DependencyProperty.Register("HeaderPresenter", typeof(object), typeof(MyUserControl), new PropertyMetadata(null, HeaderPresenterPropertyChangedCallback, CoerceValueCallback));
+
+        private static object CoerceValueCallback(DependencyObject dependencyObject, object baseValue)
+        {
+            if (baseValue == null)
+                return new TextBlock() { Text = "coerced value" };
+            return baseValue;
+        }
 
         public object FooterPresenter
         {
@@ -29,33 +37,16 @@ namespace ExtractMe
         }
 
         public static readonly DependencyProperty FooterPresenterProperty =
-            DependencyProperty.Register("FooterPresenter", typeof(object), typeof(MyUserControl), new PropertyMetadata(null));
+            DependencyProperty.Register("FooterPresenter", typeof(object), typeof(MyUserControl), new PropertyMetadata(null, FooterPresenterPropertyChangedCallback));
 
-        
-
-        public bool ShowHeaderXaml
+        private static void HeaderPresenterPropertyChangedCallback(DependencyObject obj, DependencyPropertyChangedEventArgs evtArgs)
         {
-            get { return (bool)GetValue(ShowHeaderXamlProperty); }
-            set { SetValue(ShowHeaderXamlProperty, value); }
+            ((MyUserControl)obj).HeaderControl.Visibility = (Visibility)Converter.Convert(evtArgs.NewValue != null, typeof(Visibility), null, null);
         }
 
-        // hier wird über den PropertyChangedCallback die Eigenschaft HeaderControl.Visibility gesetzt (kein xaml binding)
-        public static readonly DependencyProperty ShowHeaderXamlProperty =
-            DependencyProperty.Register("ShowHeaderXaml", typeof(bool), typeof(MyUserControl), new PropertyMetadata(true, ShowHeaderXamlPropertyChangedCallback()));
-
-        public bool ShowFooterXaml
+        private static void FooterPresenterPropertyChangedCallback(DependencyObject obj, DependencyPropertyChangedEventArgs evtArgs)
         {
-            get { return (bool)GetValue(ShowFooterXamlProperty); }
-            set { SetValue(ShowFooterXamlProperty, value); }
-        }
-
-        // hier wird die Eigenschaft FooterControl.Visibility im xaml an die DependencyProperty ShowFooterXamlProperty gebunden
-        public static readonly DependencyProperty ShowFooterXamlProperty =
-            DependencyProperty.Register("ShowFooterXaml", typeof(bool), typeof(MyUserControl), new PropertyMetadata(true));
-
-        private static PropertyChangedCallback ShowHeaderXamlPropertyChangedCallback()
-        {
-            return (o, args) => ((MyUserControl)o).HeaderPresenterControl.Visibility = (Visibility)Converter.Convert(args.NewValue, typeof(Visibility), null, null);
+            ((MyUserControl)obj).FooterControl.Visibility = (Visibility)Converter.Convert(evtArgs.NewValue != null, typeof(Visibility), null, null);
         }
 
         private static readonly BooleanToVisibilityConverter Converter = new BooleanToVisibilityConverter();

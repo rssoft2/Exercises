@@ -22,17 +22,13 @@
                 </ContentControl.Content>-->
             </ContentControl>
 
-            <!--hier wird ein Control des Typs "MyUserControl" erstellt und sowohl standard-properties als auch die eigene property "HeaderPresenter" gesetzt -->
-            <extractMe:MyUserControl x:Name="MyUserControl" Visibility="Visible" Padding="10" Background="SandyBrown" ShowHeaderXaml="True" ShowFooterXaml="True">
+            <!--hier wird ein Control des Typs "MyUserControl" erstellt und sowohl standard-properties als auch die eigenen properties "HeaderPresenter/FooterPresenter" gesetzt -->
+            <extractMe:MyUserControl x:Name="MyUserControl" Visibility="Visible" Padding="10" Background="SandyBrown">
                 <extractMe:MyUserControl.HeaderPresenter>
-                    <Border BorderBrush="Black" BorderThickness="1" Background="LightBlue" Padding="11" >
-                        <TextBlock Text="{Binding Path=MyText, Source={StaticResource MyViewModel123}}" FontWeight="Bold" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Border>
+                    <TextBlock Text="{Binding Path=MyText, Source={StaticResource MyViewModel123}}" FontWeight="Bold" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </extractMe:MyUserControl.HeaderPresenter>
                 <extractMe:MyUserControl.FooterPresenter>
-                    <Border BorderBrush="Black" BorderThickness="1" Background="LightBlue" Height="60">
-                        <TextBlock Text="footer coming from main window" FontWeight="Bold" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                    </Border>
+                    <Button Content="do not press!!!" Click="ButtonBase_OnClick"/>
                 </extractMe:MyUserControl.FooterPresenter>
             </extractMe:MyUserControl>
 

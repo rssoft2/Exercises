@@ -22,7 +22,6 @@ namespace ExtractMe
 
         public IEnumerable Liste { get; set; }
 
-
         public string MyText
         {
             get { return _myText; }

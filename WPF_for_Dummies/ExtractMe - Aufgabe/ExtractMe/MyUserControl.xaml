@@ -14,19 +14,18 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <!--hier wird ein Control namens "HeaderControl" erstellt, dessen Inhalt über Binding aus der DepProp "HeaderPresenter" kommt -->
-        <Border Background="Tomato" Padding="10">
+        <Border Name="HeaderControl" Background="Tomato" Padding="10">
+            <!--hier wird ein Control namens "HeaderPresenterControl" erstellt, dessen Inhalt über Binding aus der DepProp "HeaderPresenter" kommt -->
             <ContentPresenter Name="HeaderPresenterControl" Content="{Binding Path=HeaderPresenter, RelativeSource={RelativeSource AncestorType={x:Type extractMe:MyUserControl}}}" />
         </Border>
 
-        <Border Grid.Row="1" Margin="10" Padding="10">
+        <Border Name="BodyControl" Grid.Row="1" Margin="10" Padding="10">
             <ListBox Background="LightGray" ItemsSource="{Binding Liste}" FontSize="16" />
         </Border>
 
-        <Border Grid.Row="2" Background="YellowGreen" Padding="10"
-            Visibility="{Binding Path=ShowFooterXaml, RelativeSource={RelativeSource AncestorType={x:Type extractMe:MyUserControl}}, Converter={StaticResource VisibilityConverter456}}">
+        <Border Name="FooterControl" Grid.Row="2" Background="YellowGreen" Padding="10">
             <!--hier wird ein Control namens "FooterControl" erstellt, dessen Inhalt über Binding aus der DepProp "FooterPresenter" kommt -->
-            <ContentPresenter Name="FooterControl" Content="{Binding Path=FooterPresenter, RelativeSource={RelativeSource AncestorType={x:Type extractMe:MyUserControl}}}"/>
+            <ContentPresenter Name="FooterPresenterControl" Content="{Binding Path=FooterPresenter, RelativeSource={RelativeSource AncestorType={x:Type extractMe:MyUserControl}}}"/>
         </Border>
     </Grid>
 </UserControl>
