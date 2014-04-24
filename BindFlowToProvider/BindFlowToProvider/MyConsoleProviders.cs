@@ -21,17 +21,16 @@ namespace BindFlowToProvider
 
     class MyConsoleDataProviderWithContinuation : ISomeDataProviderWithContinuation
     {
-        public double GetSomeData(Action<double> onSuccessFunc, Action<string> onErrorFunc)
+        public void GetSomeData(Action<double> onSuccessFunc, Action<string> onErrorFunc)
         {
             double result;
             var input = Console.ReadLine();
             if (double.TryParse(input, out result))
             {
                 onSuccessFunc(result);
-                return result;
+                return;
             }
-            onErrorFunc(input);
-            return result;
+            onErrorFunc(string.Format("Error parsing input: {0}", input));
         }
     }
 

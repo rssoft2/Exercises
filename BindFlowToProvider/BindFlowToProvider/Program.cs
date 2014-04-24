@@ -6,25 +6,31 @@ namespace BindFlowToProvider
     {
         static void Main()
         {
-            #region Flow with injected Providers
+            FlowWithInjectedProviders();
+
+            FlowWithInjectedProvidersAndContinuations();
+        }
+
+        private static void FlowWithInjectedProviders()
+        {
             // Build/Bind
             ISomeDataProvider someDataProvider = new MyConsoleDataProvider();
             ISomeDataSink someDataSink = new MyConsoleDataSink();
             // Run
             Flows.FlowNeedingProvider(someDataProvider, someDataSink);
-            #endregion
+        }
 
-            #region Flow with injected Providers and Continuations
+        private static void FlowWithInjectedProvidersAndContinuations()
+        {
             // Build/Bind
             ISomeDataProviderWithContinuation someDataProviderWithContinuation = new MyConsoleDataProviderWithContinuation();
             ISomeDataSinkWithContinuation someDataSinkWithContinuation = new MyConsoleDataSinkWithContinuation();
             // Run
             Flows.FlowNeedingProviderWithContinuation(
-                someDataProviderWithContinuation, 
+                someDataProviderWithContinuation,
                 someDataSinkWithContinuation,
-                AnSuccessFunc, 
+                AnSuccessFunc,
                 AnErrorFunc);
-            #endregion
         }
 
         private static void AnSuccessFunc(double d)
@@ -32,9 +38,10 @@ namespace BindFlowToProvider
             Console.WriteLine(":-)");
         }
 
-        private static void AnErrorFunc(string d)
+        private static void AnErrorFunc(string s)
         {
-            throw new Exception(string.Format("Error: {0}", d));
+            Console.WriteLine(":-( {1}--> {0}", s, Environment.NewLine);
+            //throw new Exception(string.Format("Error: {0}", d));
         }
     }
 }

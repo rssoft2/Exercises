@@ -14,7 +14,7 @@ namespace BindFlowToProvider
 
     public interface ISomeDataProviderWithContinuation
     {
-        double GetSomeData(Action<double> onSuccessFunc, Action<string> onErrorFunc);
+        void GetSomeData(Action<double> onSuccessFunc, Action<string> onErrorFunc);
     }
 
     public interface ISomeDataSinkWithContinuation

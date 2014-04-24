@@ -39,9 +39,9 @@ namespace BindFlowToProvider.Test
 
     class MyTestDataProviderWithContinuation : ISomeDataProviderWithContinuation
     {
-        public double GetSomeData(Action<double> onSuccessFunc, Action<string> onErrorFunc)
+        public void GetSomeData(Action<double> onSuccessFunc, Action<string> onErrorFunc)
         {
-            return 123456;
+            onSuccessFunc(123456);
         }
     }
 

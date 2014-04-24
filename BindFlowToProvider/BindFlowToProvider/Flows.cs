@@ -13,9 +13,12 @@ namespace BindFlowToProvider
 
         public static void FlowNeedingProviderWithContinuation(ISomeDataProviderWithContinuation someDataProvider, ISomeDataSinkWithContinuation someDataSink, Action<double> onSuccessFunc, Action<string> onErrorFunc)
         {
-            var providedData = someDataProvider.GetSomeData(onSuccessFunc, onErrorFunc);
-            var calculatedData = Calc(providedData);
-            someDataSink.WriteSomeData(calculatedData, onSuccessFunc);
+            someDataProvider.GetSomeData(providedData =>
+            {
+                var calculatedData = Calc(providedData);
+                someDataSink.WriteSomeData(calculatedData, onSuccessFunc);
+                
+            }, onErrorFunc);
         }
 
         static private double Calc(double data)
